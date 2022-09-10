@@ -4,6 +4,8 @@ import solid from '@astrojs/solid-js'
 
 // https://astro.build/config
 export default defineConfig({
+	base: '/json',
+	site: 'https://tomieric.github.io',
 	integrations: [
 		tailwind(),
 		solid(),
