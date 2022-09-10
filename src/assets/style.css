@@ -1,0 +1,16 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+.json-editor {
+  display: flex;
+}
+
+.json-editor > div {
+  flex: 1;
+  height: 100%;
+}
