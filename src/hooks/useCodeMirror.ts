@@ -31,6 +31,7 @@ export function useCodeMirror(theme: 'dracula' | 'noctisLilac' = 'dracula') {
   const extensions = createMemo(() => {
     return [
       basicSetup,
+      EditorView.lineWrapping,
       curTheme() === 'dracula' ? dracula : noctisLilac,
       jsonPlugin(),
       linter(jsonParseLinter()),
@@ -92,9 +93,13 @@ export function useCodeMirror(theme: 'dracula' | 'noctisLilac' = 'dracula') {
   }
 
   async function fileImport(file: File) {
-    const response = await new Response(file).json()
-    setCode(jsonFormat(response))
-    confetti()
+    try {
+      const response = await new Response(file).json()
+      setCode(jsonFormat(response))
+      confetti()
+    } catch (e) {
+      alert('导入失败')
+    }
   }
 
   function compress() {
